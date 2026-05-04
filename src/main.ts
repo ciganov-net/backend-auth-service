@@ -12,6 +12,6 @@ async function bootstrap() {
 	createGrpcServer(app, config)
 
 	await app.startAllMicroservices()
-	await app.init()
+	await app.listen(config.getOrThrow<number>('HTTP_PORT'))
 }
 bootstrap()
