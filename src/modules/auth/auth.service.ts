@@ -5,6 +5,7 @@ import {
 	VerifyOtpResponse
 } from '@ciganov/contracts'
 import { Injectable } from '@nestjs/common'
+import { PinoLogger } from 'nestjs-pino'
 
 import { NotificationService } from '@/infrastructure/notification/notification.service'
 import { UserRepository } from '@/shared/repositories'
@@ -17,14 +18,16 @@ export class AuthService {
 	constructor(
 		private readonly otpService: OtpService,
 		private readonly userRepo: UserRepository,
-		private readonly notificationService: NotificationService
-	) {}
+		private readonly notificationService: NotificationService,
+		private readonly logger: PinoLogger
+	) {
+		this.logger.setContext(AuthService.name)
+	}
 
 	public async sendOtp(data: SendOtpRequest): Promise<SendOtpResponse> {
 		const { identifier } = data
 
 		const { code } = await this.otpService.send(identifier)
-		console.log(code)
 
 		await this.notificationService.otpRequested({
 			identifier,
@@ -45,6 +48,7 @@ export class AuthService {
 
 		account = await this.userRepo.findByEmail(identifier)
 		if (!account) {
+			this.logger.info(`User with ${identifier} not found, creating...`)
 			account = await this.userRepo.create({
 				email: identifier
 			})
