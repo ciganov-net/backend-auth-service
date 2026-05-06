@@ -19,7 +19,12 @@ export class OtpService {
 	public async send(identifier: string) {
 		const { code, hash } = this.generateCode()
 		this.logger.debug(`OTP code for ${identifier}: ${code}`)
-		await this.redisService.set(`otp:${identifier}`, hash, 'EX', ms('5m'))
+		await this.redisService.set(
+			`otp:${identifier}`,
+			hash,
+			'EX',
+			Math.ceil(ms('5m') / 1000)
+		)
 		return { code, hash }
 	}
 

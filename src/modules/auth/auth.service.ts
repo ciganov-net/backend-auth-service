@@ -10,8 +10,9 @@ import { PinoLogger } from 'nestjs-pino'
 import { NotificationService } from '@/infrastructure/notification/notification.service'
 import { UserRepository } from '@/shared/repositories'
 
-import { User } from '../../../prisma/generated/client'
+import { Role, User } from '../../../prisma/generated/client'
 import { OtpService } from '../otp/otp.service'
+import { TokensService } from '../tokens/tokens.service'
 
 @Injectable()
 export class AuthService {
@@ -19,6 +20,7 @@ export class AuthService {
 		private readonly otpService: OtpService,
 		private readonly userRepo: UserRepository,
 		private readonly notificationService: NotificationService,
+		private readonly tokenService: TokensService,
 		private readonly logger: PinoLogger
 	) {
 		this.logger.setContext(AuthService.name)
@@ -54,8 +56,6 @@ export class AuthService {
 			})
 		}
 
-		return {
-			token: 'token'
-		}
+		return await this.tokenService.create(account)
 	}
 }
