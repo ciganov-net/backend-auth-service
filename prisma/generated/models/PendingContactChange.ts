@@ -26,7 +26,6 @@ export type AggregatePendingContactChange = {
 
 export type PendingContactChangeMinAggregateOutputType = {
   id: string | null
-  type: string | null
   value: string | null
   codeHash: string | null
   expiresAt: Date | null
@@ -37,7 +36,6 @@ export type PendingContactChangeMinAggregateOutputType = {
 
 export type PendingContactChangeMaxAggregateOutputType = {
   id: string | null
-  type: string | null
   value: string | null
   codeHash: string | null
   expiresAt: Date | null
@@ -48,7 +46,6 @@ export type PendingContactChangeMaxAggregateOutputType = {
 
 export type PendingContactChangeCountAggregateOutputType = {
   id: number
-  type: number
   value: number
   codeHash: number
   expiresAt: number
@@ -61,7 +58,6 @@ export type PendingContactChangeCountAggregateOutputType = {
 
 export type PendingContactChangeMinAggregateInputType = {
   id?: true
-  type?: true
   value?: true
   codeHash?: true
   expiresAt?: true
@@ -72,7 +68,6 @@ export type PendingContactChangeMinAggregateInputType = {
 
 export type PendingContactChangeMaxAggregateInputType = {
   id?: true
-  type?: true
   value?: true
   codeHash?: true
   expiresAt?: true
@@ -83,7 +78,6 @@ export type PendingContactChangeMaxAggregateInputType = {
 
 export type PendingContactChangeCountAggregateInputType = {
   id?: true
-  type?: true
   value?: true
   codeHash?: true
   expiresAt?: true
@@ -167,7 +161,6 @@ export type PendingContactChangeGroupByArgs<ExtArgs extends runtime.Types.Extens
 
 export type PendingContactChangeGroupByOutputType = {
   id: string
-  type: string
   value: string
   codeHash: string
   expiresAt: Date
@@ -199,7 +192,6 @@ export type PendingContactChangeWhereInput = {
   OR?: Prisma.PendingContactChangeWhereInput[]
   NOT?: Prisma.PendingContactChangeWhereInput | Prisma.PendingContactChangeWhereInput[]
   id?: Prisma.StringFilter<"PendingContactChange"> | string
-  type?: Prisma.StringFilter<"PendingContactChange"> | string
   value?: Prisma.StringFilter<"PendingContactChange"> | string
   codeHash?: Prisma.StringFilter<"PendingContactChange"> | string
   expiresAt?: Prisma.DateTimeFilter<"PendingContactChange"> | Date | string
@@ -211,7 +203,6 @@ export type PendingContactChangeWhereInput = {
 
 export type PendingContactChangeOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  type?: Prisma.SortOrder
   value?: Prisma.SortOrder
   codeHash?: Prisma.SortOrder
   expiresAt?: Prisma.SortOrder
@@ -223,23 +214,20 @@ export type PendingContactChangeOrderByWithRelationInput = {
 
 export type PendingContactChangeWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  userId_type?: Prisma.PendingContactChangeUserIdTypeCompoundUniqueInput
+  userId?: string
   AND?: Prisma.PendingContactChangeWhereInput | Prisma.PendingContactChangeWhereInput[]
   OR?: Prisma.PendingContactChangeWhereInput[]
   NOT?: Prisma.PendingContactChangeWhereInput | Prisma.PendingContactChangeWhereInput[]
-  type?: Prisma.StringFilter<"PendingContactChange"> | string
   value?: Prisma.StringFilter<"PendingContactChange"> | string
   codeHash?: Prisma.StringFilter<"PendingContactChange"> | string
   expiresAt?: Prisma.DateTimeFilter<"PendingContactChange"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"PendingContactChange"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PendingContactChange"> | Date | string
-  userId?: Prisma.StringFilter<"PendingContactChange"> | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-}, "id" | "userId_type">
+}, "id" | "userId">
 
 export type PendingContactChangeOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  type?: Prisma.SortOrder
   value?: Prisma.SortOrder
   codeHash?: Prisma.SortOrder
   expiresAt?: Prisma.SortOrder
@@ -256,7 +244,6 @@ export type PendingContactChangeScalarWhereWithAggregatesInput = {
   OR?: Prisma.PendingContactChangeScalarWhereWithAggregatesInput[]
   NOT?: Prisma.PendingContactChangeScalarWhereWithAggregatesInput | Prisma.PendingContactChangeScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"PendingContactChange"> | string
-  type?: Prisma.StringWithAggregatesFilter<"PendingContactChange"> | string
   value?: Prisma.StringWithAggregatesFilter<"PendingContactChange"> | string
   codeHash?: Prisma.StringWithAggregatesFilter<"PendingContactChange"> | string
   expiresAt?: Prisma.DateTimeWithAggregatesFilter<"PendingContactChange"> | Date | string
@@ -267,7 +254,6 @@ export type PendingContactChangeScalarWhereWithAggregatesInput = {
 
 export type PendingContactChangeCreateInput = {
   id?: string
-  type: string
   value: string
   codeHash: string
   expiresAt: Date | string
@@ -278,7 +264,6 @@ export type PendingContactChangeCreateInput = {
 
 export type PendingContactChangeUncheckedCreateInput = {
   id?: string
-  type: string
   value: string
   codeHash: string
   expiresAt: Date | string
@@ -289,7 +274,6 @@ export type PendingContactChangeUncheckedCreateInput = {
 
 export type PendingContactChangeUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.StringFieldUpdateOperationsInput | string
   codeHash?: Prisma.StringFieldUpdateOperationsInput | string
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -300,7 +284,6 @@ export type PendingContactChangeUpdateInput = {
 
 export type PendingContactChangeUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.StringFieldUpdateOperationsInput | string
   codeHash?: Prisma.StringFieldUpdateOperationsInput | string
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -311,7 +294,6 @@ export type PendingContactChangeUncheckedUpdateInput = {
 
 export type PendingContactChangeCreateManyInput = {
   id?: string
-  type: string
   value: string
   codeHash: string
   expiresAt: Date | string
@@ -322,7 +304,6 @@ export type PendingContactChangeCreateManyInput = {
 
 export type PendingContactChangeUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.StringFieldUpdateOperationsInput | string
   codeHash?: Prisma.StringFieldUpdateOperationsInput | string
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -332,7 +313,6 @@ export type PendingContactChangeUpdateManyMutationInput = {
 
 export type PendingContactChangeUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.StringFieldUpdateOperationsInput | string
   codeHash?: Prisma.StringFieldUpdateOperationsInput | string
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -351,14 +331,8 @@ export type PendingContactChangeOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type PendingContactChangeUserIdTypeCompoundUniqueInput = {
-  userId: string
-  type: string
-}
-
 export type PendingContactChangeCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  type?: Prisma.SortOrder
   value?: Prisma.SortOrder
   codeHash?: Prisma.SortOrder
   expiresAt?: Prisma.SortOrder
@@ -369,7 +343,6 @@ export type PendingContactChangeCountOrderByAggregateInput = {
 
 export type PendingContactChangeMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  type?: Prisma.SortOrder
   value?: Prisma.SortOrder
   codeHash?: Prisma.SortOrder
   expiresAt?: Prisma.SortOrder
@@ -380,7 +353,6 @@ export type PendingContactChangeMaxOrderByAggregateInput = {
 
 export type PendingContactChangeMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  type?: Prisma.SortOrder
   value?: Prisma.SortOrder
   codeHash?: Prisma.SortOrder
   expiresAt?: Prisma.SortOrder
@@ -433,7 +405,6 @@ export type PendingContactChangeUncheckedUpdateManyWithoutUserNestedInput = {
 
 export type PendingContactChangeCreateWithoutUserInput = {
   id?: string
-  type: string
   value: string
   codeHash: string
   expiresAt: Date | string
@@ -443,7 +414,6 @@ export type PendingContactChangeCreateWithoutUserInput = {
 
 export type PendingContactChangeUncheckedCreateWithoutUserInput = {
   id?: string
-  type: string
   value: string
   codeHash: string
   expiresAt: Date | string
@@ -482,7 +452,6 @@ export type PendingContactChangeScalarWhereInput = {
   OR?: Prisma.PendingContactChangeScalarWhereInput[]
   NOT?: Prisma.PendingContactChangeScalarWhereInput | Prisma.PendingContactChangeScalarWhereInput[]
   id?: Prisma.StringFilter<"PendingContactChange"> | string
-  type?: Prisma.StringFilter<"PendingContactChange"> | string
   value?: Prisma.StringFilter<"PendingContactChange"> | string
   codeHash?: Prisma.StringFilter<"PendingContactChange"> | string
   expiresAt?: Prisma.DateTimeFilter<"PendingContactChange"> | Date | string
@@ -493,7 +462,6 @@ export type PendingContactChangeScalarWhereInput = {
 
 export type PendingContactChangeCreateManyUserInput = {
   id?: string
-  type: string
   value: string
   codeHash: string
   expiresAt: Date | string
@@ -503,7 +471,6 @@ export type PendingContactChangeCreateManyUserInput = {
 
 export type PendingContactChangeUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.StringFieldUpdateOperationsInput | string
   codeHash?: Prisma.StringFieldUpdateOperationsInput | string
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -513,7 +480,6 @@ export type PendingContactChangeUpdateWithoutUserInput = {
 
 export type PendingContactChangeUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.StringFieldUpdateOperationsInput | string
   codeHash?: Prisma.StringFieldUpdateOperationsInput | string
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -523,7 +489,6 @@ export type PendingContactChangeUncheckedUpdateWithoutUserInput = {
 
 export type PendingContactChangeUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.StringFieldUpdateOperationsInput | string
   value?: Prisma.StringFieldUpdateOperationsInput | string
   codeHash?: Prisma.StringFieldUpdateOperationsInput | string
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -535,7 +500,6 @@ export type PendingContactChangeUncheckedUpdateManyWithoutUserInput = {
 
 export type PendingContactChangeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  type?: boolean
   value?: boolean
   codeHash?: boolean
   expiresAt?: boolean
@@ -547,7 +511,6 @@ export type PendingContactChangeSelect<ExtArgs extends runtime.Types.Extensions.
 
 export type PendingContactChangeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  type?: boolean
   value?: boolean
   codeHash?: boolean
   expiresAt?: boolean
@@ -559,7 +522,6 @@ export type PendingContactChangeSelectCreateManyAndReturn<ExtArgs extends runtim
 
 export type PendingContactChangeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  type?: boolean
   value?: boolean
   codeHash?: boolean
   expiresAt?: boolean
@@ -571,7 +533,6 @@ export type PendingContactChangeSelectUpdateManyAndReturn<ExtArgs extends runtim
 
 export type PendingContactChangeSelectScalar = {
   id?: boolean
-  type?: boolean
   value?: boolean
   codeHash?: boolean
   expiresAt?: boolean
@@ -580,7 +541,7 @@ export type PendingContactChangeSelectScalar = {
   userId?: boolean
 }
 
-export type PendingContactChangeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "value" | "codeHash" | "expiresAt" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["pendingContactChange"]>
+export type PendingContactChangeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "value" | "codeHash" | "expiresAt" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["pendingContactChange"]>
 export type PendingContactChangeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -598,7 +559,6 @@ export type $PendingContactChangePayload<ExtArgs extends runtime.Types.Extension
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    type: string
     value: string
     codeHash: string
     expiresAt: Date
@@ -1030,7 +990,6 @@ export interface Prisma__PendingContactChangeClient<T, Null = never, ExtArgs ext
  */
 export interface PendingContactChangeFieldRefs {
   readonly id: Prisma.FieldRef<"PendingContactChange", 'String'>
-  readonly type: Prisma.FieldRef<"PendingContactChange", 'String'>
   readonly value: Prisma.FieldRef<"PendingContactChange", 'String'>
   readonly codeHash: Prisma.FieldRef<"PendingContactChange", 'String'>
   readonly expiresAt: Prisma.FieldRef<"PendingContactChange", 'DateTime'>

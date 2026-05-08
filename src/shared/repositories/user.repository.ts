@@ -12,6 +12,14 @@ import {
 export class UserRepository {
 	constructor(private readonly prismaService: PrismaService) {}
 
+	public async findById(id: string): Promise<User | null> {
+		return await this.prismaService.user.findUnique({
+			where: {
+				id
+			}
+		})
+	}
+
 	public async findByEmail(email: string): Promise<User | null> {
 		return await this.prismaService.user.findUnique({
 			where: {

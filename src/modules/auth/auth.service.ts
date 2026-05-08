@@ -3,14 +3,14 @@ import {
 	SendOtpResponse,
 	VerifyOtpRequest,
 	VerifyOtpResponse
-} from '@ciganov/contracts'
+} from '@ciganov/contracts/gen/auth'
 import { Injectable } from '@nestjs/common'
 import { PinoLogger } from 'nestjs-pino'
 
 import { NotificationService } from '@/infrastructure/notification/notification.service'
 import { UserRepository } from '@/shared/repositories'
 
-import { Role, User } from '../../../prisma/generated/client'
+import { User } from '../../../prisma/generated/client'
 import { OtpService } from '../otp/otp.service'
 import { TokensService } from '../tokens/tokens.service'
 
@@ -30,7 +30,6 @@ export class AuthService {
 		const { identifier } = data
 
 		const { code } = await this.otpService.send(identifier)
-
 		await this.notificationService.otpRequested({
 			identifier,
 			code

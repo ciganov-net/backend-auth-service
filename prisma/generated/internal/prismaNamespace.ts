@@ -605,7 +605,6 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 
 export const PendingContactChangeScalarFieldEnum = {
   id: 'id',
-  type: 'type',
   value: 'value',
   codeHash: 'codeHash',
   expiresAt: 'expiresAt',

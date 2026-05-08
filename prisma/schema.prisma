@@ -26,7 +26,6 @@ model User {
 model PendingContactChange {
   id String @id @default(nanoid())
 
-  type      String
   value     String
   codeHash  String   @map("code_hash")
   expiresAt DateTime @map("expires_at")
@@ -36,7 +35,7 @@ model PendingContactChange {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String   @map("user_id")
 
-  @@unique([userId, type])
+  @@unique([userId])
   @@map("pending_contact_changes")
 }
 
