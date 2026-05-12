@@ -33,9 +33,8 @@ model PendingContactChange {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId    String   @map("user_id")
+  userId    String   @unique @map("user_id")
 
-  @@unique([userId])
   @@map("pending_contact_changes")
 }
 

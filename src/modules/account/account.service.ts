@@ -1,17 +1,16 @@
 import {
-	ConfirmEmailChangeRequest,
-	ConfirmEmailChangeResponse,
+	type ConfirmEmailChangeRequest,
+	type ConfirmEmailChangeResponse,
 	type GetAccountRequest,
 	type GetAccountResponse,
-	InitEmailChangeRequest,
-	InitEmailChangeResponse,
+	type InitEmailChangeRequest,
+	type InitEmailChangeResponse,
 	Role
-} from '@ciganov/contracts/gen/account'
+} from '@ciganov/contracts/dist/gen/account'
 import { convertEnum, RpcStatus } from '@ciganov/core'
 import { Injectable } from '@nestjs/common'
 import { RpcException } from '@nestjs/microservices'
 import { PinoLogger } from 'nestjs-pino'
-import { lastValueFrom } from 'rxjs'
 
 import { NotificationService } from '@/infrastructure/notification/notification.service'
 import { PrismaService } from '@/infrastructure/prisma/prisma.service'
@@ -56,8 +55,7 @@ export class AccountService {
 		data: InitEmailChangeRequest
 	): Promise<InitEmailChangeResponse> {
 		const { email, userId } = data
-		const isExists = this.userRepo.findByEmail(email)
-
+		const isExists = await this.userRepo.findByEmail(email)
 		if (isExists) {
 			throw new RpcException({
 				code: RpcStatus.ALREADY_EXISTS,

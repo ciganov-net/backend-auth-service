@@ -3,7 +3,7 @@ import type {
 	SendOtpResponse,
 	VerifyOtpRequest,
 	VerifyOtpResponse
-} from '@ciganov/contracts/gen/auth'
+} from '@ciganov/contracts/dist/gen/auth'
 import { Controller } from '@nestjs/common'
 import { GrpcMethod } from '@nestjs/microservices'
 

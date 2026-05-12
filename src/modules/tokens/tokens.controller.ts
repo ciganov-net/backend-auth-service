@@ -2,7 +2,7 @@ import type {
 	GetSessionByTokenRequest,
 	GetSessionByTokenResponse,
 	RefreshTokenRequest
-} from '@ciganov/contracts/gen/auth'
+} from '@ciganov/contracts/dist/gen/auth'
 import { Controller } from '@nestjs/common'
 import { GrpcMethod } from '@nestjs/microservices'
 

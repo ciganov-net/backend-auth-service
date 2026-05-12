@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common'
 
+import { UsersModule } from '@/infrastructure/grpc/clients/users.module'
 import { UserRepository } from '@/shared/repositories'
 
 import { OtpModule } from '../otp/otp.module'
@@ -11,6 +12,6 @@ import { AuthService } from './auth.service'
 @Module({
 	controllers: [AuthController],
 	providers: [AuthService, UserRepository],
-	imports: [TokensModule, OtpModule]
+	imports: [TokensModule, OtpModule, UsersModule]
 })
 export class AuthModule {}

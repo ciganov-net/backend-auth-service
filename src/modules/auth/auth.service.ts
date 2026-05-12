@@ -3,10 +3,11 @@ import {
 	SendOtpResponse,
 	VerifyOtpRequest,
 	VerifyOtpResponse
-} from '@ciganov/contracts/gen/auth'
+} from '@ciganov/contracts/dist/gen/auth'
 import { Injectable } from '@nestjs/common'
 import { PinoLogger } from 'nestjs-pino'
 
+import { UsersClientGrpc } from '@/infrastructure/grpc/clients/users.grpc'
 import { NotificationService } from '@/infrastructure/notification/notification.service'
 import { UserRepository } from '@/shared/repositories'
 
@@ -21,6 +22,7 @@ export class AuthService {
 		private readonly userRepo: UserRepository,
 		private readonly notificationService: NotificationService,
 		private readonly tokenService: TokensService,
+		private readonly usersClient: UsersClientGrpc,
 		private readonly logger: PinoLogger
 	) {
 		this.logger.setContext(AuthService.name)
@@ -54,6 +56,8 @@ export class AuthService {
 				email: identifier
 			})
 		}
+
+		this.usersClient.create({ id: account.id }).subscribe()
 
 		return await this.tokenService.create(account)
 	}

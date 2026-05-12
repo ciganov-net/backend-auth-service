@@ -5,6 +5,7 @@ import { LoggerModule } from 'nestjs-pino'
 import { NotificationModule } from '@/infrastructure/notification/notification.module'
 import { PrismaModule } from '@/infrastructure/prisma/prisma.module'
 import { RedisModule } from '@/infrastructure/redis/redis.module'
+import { AccountModule } from '@/modules/account/account.module'
 import { AuthModule } from '@/modules/auth/auth.module'
 import { OtpModule } from '@/modules/otp/otp.module'
 import { ObservabilityModule } from '@/observability/observability.module'
@@ -40,7 +41,8 @@ import { ObservabilityModule } from '@/observability/observability.module'
 		RedisModule,
 		NotificationModule,
 		AuthModule,
-		OtpModule
+		OtpModule,
+		AccountModule
 	],
 	controllers: []
 })
