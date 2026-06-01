@@ -1,4 +1,6 @@
 import {
+	RevokeAllSessionsRequest,
+	RevokeSessionRequest,
 	SendOtpRequest,
 	SendOtpResponse,
 	VerifyOtpRequest,
@@ -60,5 +62,15 @@ export class AuthService {
 		this.usersClient.create({ id: account.id }).subscribe()
 
 		return await this.tokenService.create(account)
+	}
+
+	public async revoke(data: RevokeSessionRequest) {
+		const { token } = data
+		await this.tokenService.revoke(token)
+	}
+
+	public async revokeAll(data: RevokeAllSessionsRequest) {
+		const { userId } = data
+		await this.tokenService.revokeAll(userId)
 	}
 }

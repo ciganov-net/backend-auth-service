@@ -1,4 +1,6 @@
 import type {
+	RevokeAllSessionsRequest,
+	RevokeSessionRequest,
 	SendOtpRequest,
 	SendOtpResponse,
 	VerifyOtpRequest,
@@ -21,5 +23,15 @@ export class AuthController {
 	@GrpcMethod('AuthService', 'VerifyOtp')
 	public async verifyOtp(data: VerifyOtpRequest): Promise<VerifyOtpResponse> {
 		return await this.authService.verifyOtp(data)
+	}
+
+	@GrpcMethod('AuthService', 'RevokeSession')
+	public async revoke(data: RevokeSessionRequest) {
+		return await this.authService.revoke(data)
+	}
+
+	@GrpcMethod('AuthService', 'RevokeAllSessionsRequest')
+	public async revokeAll(data: RevokeAllSessionsRequest) {
+		return await this.authService.revokeAll(data)
 	}
 }
