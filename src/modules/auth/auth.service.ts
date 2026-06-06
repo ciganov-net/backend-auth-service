@@ -9,7 +9,9 @@ import {
 import { Injectable } from '@nestjs/common'
 import { PinoLogger } from 'nestjs-pino'
 
-import { UsersClientGrpc } from '@/infrastructure/grpc/clients/users.grpc'
+import { BalanceClientGrpc } from '@/infrastructure/grpc/clients/balance/balance.grpc'
+import { BonusClientGrpc } from '@/infrastructure/grpc/clients/bonus/bonus.grpc'
+import { UsersClientGrpc } from '@/infrastructure/grpc/clients/users/users.grpc'
 import { NotificationService } from '@/infrastructure/notification/notification.service'
 import { UserRepository } from '@/shared/repositories'
 
@@ -25,6 +27,8 @@ export class AuthService {
 		private readonly notificationService: NotificationService,
 		private readonly tokenService: TokensService,
 		private readonly usersClient: UsersClientGrpc,
+		private readonly balanceClient: BalanceClientGrpc,
+		private readonly bonusClient: BonusClientGrpc,
 		private readonly logger: PinoLogger
 	) {
 		this.logger.setContext(AuthService.name)
@@ -59,7 +63,14 @@ export class AuthService {
 			})
 		}
 
-		this.usersClient.create({ id: account.id }).subscribe()
+		await this.usersClient.create({ id: account.id }).subscribe()
+		await this.balanceClient.createWallet({ userId: account.id }).subscribe()
+		await this.bonusClient
+			.activatePromo({
+				userId: account.id,
+				code: 'freebet'
+			})
+			.subscribe()
 
 		return await this.tokenService.create(account)
 	}
