@@ -61,16 +61,15 @@ export class AuthService {
 			account = await this.userRepo.create({
 				email: identifier
 			})
+			await this.usersClient.create({ id: account.id }).subscribe()
+			await this.balanceClient.createWallet({ userId: account.id }).subscribe()
+			await this.bonusClient
+				.activatePromo({
+					userId: account.id,
+					code: 'freebet'
+				})
+				.subscribe()
 		}
-
-		await this.usersClient.create({ id: account.id }).subscribe()
-		await this.balanceClient.createWallet({ userId: account.id }).subscribe()
-		await this.bonusClient
-			.activatePromo({
-				userId: account.id,
-				code: 'freebet'
-			})
-			.subscribe()
 
 		return await this.tokenService.create(account)
 	}
